@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrimeSceneDesktop.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <HorizontalStackLayout
+                Spacing="10"
+                Padding="0,0"
+                HorizontalOptions="Center">
+
+                <Label
+                    Text="Логин"
+                    TextColor="#0013c1"
+                    WidthRequest="80"
+                    FontSize="20"
+                    HorizontalOptions="Center" />
+
+                <Entry
+                    MaxLength="100"
+                    Placeholder="Логин"
+                    Text="" 
+                    FontSize="17"
+                    TextColor="#0013c1"
+                    BackgroundColor="#d3d7fd"
+                    WidthRequest="200"
+                    HeightRequest="25"
+                    PlaceholderColor="#ffffff"/>
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Spacing="10"
+                Padding="0,0"
+                HorizontalOptions="Center">
+
+                <Label
+                    Text="Пароль"
+                    TextColor="#0013c1"
+                    WidthRequest="80"
+                    FontSize="20"
+                    HorizontalOptions="Center" />
+                
+                <Entry
+                    MaxLength="100"
+                    Placeholder="Пароль"
+                    IsPassword="True"
+                    Text="" 
+                    TextColor="#0013c1"
+                    BackgroundColor="#d3d7fd"
+                    FontSize="17"
+                    WidthRequest="200"
+                    HeightRequest="25"
+                    PlaceholderColor="#ffffff"/>
+
+            </HorizontalStackLayout>
+
+            <Button
+                x:Name="LogInBtn"
+                WidthRequest="135"
+                HeightRequest="35"
+                BackgroundColor="#a7affc"
+                Text="Войти"
+                Clicked="OnLoginClicked"
+                HorizontalOptions="Center" 
+                FontSize="20"
+                FontFamily="Inter"
+                FontAttributes="None" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
