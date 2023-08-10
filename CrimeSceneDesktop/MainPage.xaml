@@ -16,7 +16,7 @@
 
                 <Label
                     Text="Логин"
-                    TextColor="#0013c1"
+                    TextColor="#191970"
                     WidthRequest="80"
                     FontSize="20"
                     HorizontalOptions="Center" />
@@ -26,11 +26,11 @@
                     Placeholder="Логин"
                     Text="" 
                     FontSize="17"
-                    TextColor="#0013c1"
-                    BackgroundColor="#d3d7fd"
+                    TextColor="#191970"
+                    BackgroundColor="White"
                     WidthRequest="200"
                     HeightRequest="25"
-                    PlaceholderColor="#ffffff"/>
+                    PlaceholderColor="#A9A9A9"/>
 
             </HorizontalStackLayout>
 
@@ -41,7 +41,7 @@
 
                 <Label
                     Text="Пароль"
-                    TextColor="#0013c1"
+                    TextColor="#191970"
                     WidthRequest="80"
                     FontSize="20"
                     HorizontalOptions="Center" />
@@ -51,12 +51,12 @@
                     Placeholder="Пароль"
                     IsPassword="True"
                     Text="" 
-                    TextColor="#0013c1"
-                    BackgroundColor="#d3d7fd"
+                    TextColor="#191970"
+                    BackgroundColor="White"
                     FontSize="17"
                     WidthRequest="200"
                     HeightRequest="25"
-                    PlaceholderColor="#ffffff"/>
+                    PlaceholderColor="#A9A9A9"/>
 
             </HorizontalStackLayout>
 
@@ -64,7 +64,7 @@
                 x:Name="LogInBtn"
                 WidthRequest="135"
                 HeightRequest="35"
-                BackgroundColor="#a7affc"
+                BackgroundColor="#272B2F"
                 Text="Войти"
                 Clicked="OnLoginClicked"
                 HorizontalOptions="Center" 

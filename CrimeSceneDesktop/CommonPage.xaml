@@ -16,16 +16,16 @@
             <Frame
                 Margin="0"
                 Padding="5,2"
-                BackgroundColor="White"
-                BorderColor="white">
+                BackgroundColor="#212529"
+                BorderColor="#212529">
 
                 <Frame
                     HeightRequest="50"
                     Grid.Column="0"
                     Grid.Row="0"
                     Margin="5"
-                    BorderColor="#d3d7fd"
-                    BackgroundColor="#d3d7fd">
+                    BorderColor="#212529"
+                    BackgroundColor="#212529">
 
                     <Grid>
 
@@ -50,7 +50,8 @@
                                 FontSize="15"
                                 FontFamily="Inter"
                                 HeightRequest="25"
-                                WidthRequest="50"/>
+                                WidthRequest="50"
+                                TextColor="White"/>
 
                             <Label
                                 Text="ФИО"
@@ -58,7 +59,8 @@
                                 FontSize="15"
                                 FontFamily="Inter"
                                 HeightRequest="25"
-                                WidthRequest="200"/>
+                                WidthRequest="200"
+                                TextColor="White"/>
 
                             <Label
                                 Text="Начало"
@@ -66,7 +68,8 @@
                                 FontSize="15"
                                 FontFamily="Inter"
                                 HeightRequest="25"
-                                WidthRequest="175"/>
+                                WidthRequest="175"
+                                TextColor="White"/>
 
                             <Label
                                 Text="Конец"
@@ -74,7 +77,8 @@
                                 FontSize="15"
                                 FontFamily="Inter"
                                 HeightRequest="25"
-                                WidthRequest="175"/>
+                                WidthRequest="175"
+                                TextColor="White"/>
 
                             <Label
                                 Text="Фрагм."
@@ -82,7 +86,8 @@
                                 FontSize="15"
                                 FontFamily="Inter"
                                 HeightRequest="25"
-                                WidthRequest="80"/>
+                                WidthRequest="80"
+                                TextColor="White"/>
 
                         </HorizontalStackLayout>
 
@@ -112,8 +117,8 @@
 
                                 <Frame
                                     Margin="5"
-                                    BorderColor="#d3d7fd"
-                                    BackgroundColor="#d3d7fd">
+                                    BorderColor="#212529"
+                                    BackgroundColor="#ACC0E1">
 
                                     <Grid>
 
@@ -205,7 +210,8 @@
                         Text="Создать анкету"
                         WidthRequest="250"
                         HeightRequest="50"
-                        FontSize="20"/>
+                        FontSize="20"
+                        BackgroundColor="#272B2F"/>
                     
                 </Frame>
                 
@@ -215,10 +221,12 @@
                     Padding="0,0,0,50">
                     
                     <Button
+                        x:Name="SetSceneBtn"
                         Text="Выбрать сцену"
                         WidthRequest="250"
                         HeightRequest="50"
-                        FontSize="20"/>
+                        FontSize="20"
+                        BackgroundColor="#272B2F"/>
                     
                 </Frame>
                 
@@ -231,13 +239,14 @@
                         Text="Создать сцену"
                         WidthRequest="250"
                         HeightRequest="50"
-                        FontSize="20"/>
+                        FontSize="20"
+                        BackgroundColor="#272B2F"/>
                 </Frame>
                 
                 <Frame
                     Padding="0,10,0,10"
-                    BorderColor="#d3d7fd"
-                    BackgroundColor="#d3d7fd">
+                    BorderColor="#212529"
+                    BackgroundColor="#212529">
                     
                     <VerticalStackLayout
                         HorizontalOptions="Center"
@@ -250,7 +259,8 @@
                             HeightRequest="30"
                             FontAttributes="Bold"
                             VerticalOptions="Center"
-                            HorizontalTextAlignment="Center" />
+                            HorizontalTextAlignment="Center"
+                            TextColor="White"/>
                         
                         <Label
                             Text="username"
@@ -259,7 +269,8 @@
                             HeightRequest="30"
                             FontAttributes="Italic"
                             VerticalOptions="Center"
-                            HorizontalTextAlignment="Center" />
+                            HorizontalTextAlignment="Center"
+                            TextColor="White"/>
                         
                         <Button
                             x:Name ="LogoutBtn"
@@ -269,7 +280,7 @@
                             FontFamily="Inter"
                             FontSize="17"
                             TextColor="#ffffff"
-                            BackgroundColor="#a7affc" />
+                            BackgroundColor="#272B2F" />
 
                     </VerticalStackLayout>
 
