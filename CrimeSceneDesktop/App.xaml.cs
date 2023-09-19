@@ -5,14 +5,14 @@ namespace CrimeSceneDesktop;
 
 public partial class App : Application
 {
-	public App()
-	{
-		InitializeComponent();
+    public App()
+    {
+        InitializeComponent();
 
-		Current.UserAppTheme = AppTheme.Light;
-		MainPage = new AppShell();
+        Current.UserAppTheme = AppTheme.Light;
+        MainPage = new AppShell();
 
-		Routing.RegisterRoute("commonPage", typeof(CommonPage));
-		Routing.RegisterRoute("mainPage", typeof(MainPage));
-	}
+        Routing.RegisterRoute("commonPage", typeof(CommonPage));
+        Routing.RegisterRoute("mainPage", typeof(MainPage));
+    }
 }
