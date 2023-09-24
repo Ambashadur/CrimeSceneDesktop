@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using CrimeSceneDesktop.Contracts;
+using CrimeSceneDesktop.Contracts.Users;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
 
@@ -11,7 +11,7 @@ namespace CrimeSceneDesktop;
 
 public partial class CommonPage : ContentPage
 {
-    private IEnumerable<Person> _persons = Enumerable.Empty<Person>();
+    private IEnumerable<User> _persons = Enumerable.Empty<User>();
 
     public CommonPage() {
         InitializeComponent();
@@ -21,16 +21,8 @@ public partial class CommonPage : ContentPage
         SetSceneBtn.Clicked += SetScene;
     }
 
-    private IEnumerable<Person> GetPersonRecords() {
-        _persons = new List<Person>() {
-            new() {
-                Id = Random.Shared.Next(0, 100),
-                FullName = "Ivan Ivanov Ivanovich",
-                Start = DateTime.Now.AddHours(-1),
-                End = DateTime.Now,
-                Count= Random.Shared.Next(0, 10)
-            }
-        };
+    private IEnumerable<User> GetPersonRecords() {
+        _persons = new List<User>();
 
         return _persons;
     }

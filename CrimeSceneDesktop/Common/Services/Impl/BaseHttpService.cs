@@ -1,7 +1,8 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace CSDesktop.Common.Services.Impl;
+namespace CrimeSceneDesktop.Common.Services.Impl;
 
 public abstract class BaseHttpService
 {

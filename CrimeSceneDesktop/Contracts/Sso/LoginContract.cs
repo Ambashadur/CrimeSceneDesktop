@@ -1,4 +1,4 @@
-﻿namespace CSDesktop.Contracts.Sso;
+﻿namespace CrimeSceneDesktop.Contracts.Sso;
 
 public class LoginContract
 {

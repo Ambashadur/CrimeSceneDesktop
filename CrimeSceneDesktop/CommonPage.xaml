@@ -146,28 +146,28 @@
                                                 WidthRequest="50" />
 
                                             <Label
-                                                Text="{Binding FullName}"
+                                                Text="{Binding FirstName}"
                                                 HorizontalTextAlignment="Center"
                                                 FontSize="15" FontFamily="Inter"
                                                 HeightRequest="25"
                                                 WidthRequest="200" />
 
                                             <Label
-                                                Text="{Binding Start}"
+                                                Text="{Binding LastName}"
                                                 HorizontalTextAlignment="Center"
                                                 FontSize="15" FontFamily="Inter"
                                                 HeightRequest="25"
                                                 WidthRequest="175" />
 
                                             <Label
-                                                Text="{Binding End}"
+                                                Text="{Binding Role}"
                                                 HorizontalTextAlignment="Center"
                                                 FontSize="15" FontFamily="Inter"
                                                 HeightRequest="25"
                                                 WidthRequest="175" />
 
                                             <Label
-                                                Text="{Binding Count}"
+                                                Text="{Binding Login}"
                                                 HorizontalTextAlignment="Center"
                                                 FontSize="15" FontFamily="Inter"
                                                 HeightRequest="25"

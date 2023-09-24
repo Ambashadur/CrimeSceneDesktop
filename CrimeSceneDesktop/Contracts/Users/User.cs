@@ -1,4 +1,4 @@
-﻿namespace CSDesktop.Contracts.Users;
+﻿namespace CrimeSceneDesktop.Contracts.Users;
 
 public class User
 {

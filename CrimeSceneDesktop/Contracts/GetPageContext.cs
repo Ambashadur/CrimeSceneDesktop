@@ -1,4 +1,4 @@
-﻿namespace CSDesktop.Contracts;
+﻿namespace CrimeSceneDesktop.Contracts;
 
 public class GetPageContext
 {

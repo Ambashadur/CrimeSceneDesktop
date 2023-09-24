@@ -10,5 +10,12 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    private void OnLoginClicked(object? sender, EventArgs e) => Shell.Current.GoToAsync("//commonPage", true);
+    private void OnLoginClicked(object? sender, EventArgs e) {
+        //await _ssoService.LoginAsync(new LoginContract() {
+        //    Login = loginEntry.Text,
+        //    Password = passwordEntry.Text
+        //});
+
+        Shell.Current.GoToAsync("//commonPage", true);
+    }
 }
