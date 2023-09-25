@@ -16,9 +16,9 @@ public partial class CommonPage : ContentPage
     public CommonPage() {
         InitializeComponent();
 
-        MainCollectionView.ItemsSource = GetPersonRecords();
-        LogoutBtn.Clicked += (obj, args) => Shell.Current.GoToAsync("//mainPage");
-        SetSceneBtn.Clicked += SetScene;
+        //MainCollectionView.ItemsSource = GetPersonRecords();
+        //LogoutBtn.Clicked += (obj, args) => Shell.Current.GoToAsync("//mainPage");
+        //SetSceneBtn.Clicked += SetScene;
     }
 
     private IEnumerable<User> GetPersonRecords() {

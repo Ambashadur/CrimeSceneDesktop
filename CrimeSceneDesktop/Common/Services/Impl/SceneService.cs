@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -24,9 +23,7 @@ public class SceneService : BaseHttpService, ISceneService
         multipartFormContent.Add(streamContent, "formFile", filename);
         multipartFormContent.Add(new StringContent(name), "name");
 
-        var request = new HttpRequestMessage() {
-            Method = HttpMethod.Post,
-            RequestUri = new Uri(CREATE_SCENE),
+        var request = new HttpRequestMessage(HttpMethod.Post, CREATE_SCENE) {
             Content = multipartFormContent
         };
 
@@ -37,9 +34,7 @@ public class SceneService : BaseHttpService, ISceneService
     }
 
     public async Task<PageResult<Scene>> GetScenePageAsync(GetPageContext context) {
-        var request = new HttpRequestMessage() {
-            Method = HttpMethod.Post,
-            RequestUri = new Uri(SCENE_PAGE),
+        var request = new HttpRequestMessage(HttpMethod.Post, SCENE_PAGE) {
             Content = JsonContent.Create(context, options: _options)
         };
 

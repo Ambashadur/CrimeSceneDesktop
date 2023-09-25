@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -11,8 +12,9 @@ public abstract class BaseHttpService
 
     protected BaseHttpService() {
         _httpClient = new HttpClient();
-        _options = new();
+        _httpClient.BaseAddress = new Uri("http://localhost:5197");
 
+        _options = new();
         _options.Converters.Add(new JsonStringEnumConverter());
     }
 }

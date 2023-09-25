@@ -22,6 +22,7 @@
                     HorizontalOptions="Center" />
 
                 <Entry
+                    x:Name="loginEntry"
                     MaxLength="100"
                     Placeholder="Логин"
                     Text="" 
@@ -47,6 +48,7 @@
                     HorizontalOptions="Center" />
                 
                 <Entry
+                    x:Name="passwordEntry"
                     MaxLength="100"
                     Placeholder="Пароль"
                     IsPassword="True"

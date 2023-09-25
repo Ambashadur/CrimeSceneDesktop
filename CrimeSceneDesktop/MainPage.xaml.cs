@@ -1,21 +1,31 @@
 ﻿using System;
+using CrimeSceneDesktop.Common.Services;
+using CrimeSceneDesktop.Contracts.Sso;
 using Microsoft.Maui.Controls;
 
 namespace CrimeSceneDesktop;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    private readonly ISsoService _ssoService;
+
+    public MainPage(ISsoService ssoService)
     {
+        _ssoService = ssoService;
+
         InitializeComponent();
     }
 
-    private void OnLoginClicked(object? sender, EventArgs e) {
-        //await _ssoService.LoginAsync(new LoginContract() {
-        //    Login = loginEntry.Text,
-        //    Password = passwordEntry.Text
-        //});
+    private async void OnLoginClicked(object? sender, EventArgs e) {
+        try {
+            await _ssoService.LoginAsync(new LoginContract {
+                Login = loginEntry.Text,
+                Password = passwordEntry.Text
+            });
 
-        Shell.Current.GoToAsync("//commonPage", true);
+            await Shell.Current.GoToAsync("//commonPage", true);
+        } catch (Exception ex) {
+            await DisplayAlert("Ошибка", "Ошибка при работе с сетью", "ОК");
+        }
     }
 }
