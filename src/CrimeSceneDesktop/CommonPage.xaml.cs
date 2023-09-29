@@ -1,9 +1,9 @@
+using CS.Common.Services;
+using CS.Contracts;
 using CS.Contracts.Users;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -11,16 +11,25 @@ namespace CrimeSceneDesktop;
 
 public partial class CommonPage : ContentPage
 {
-    private IEnumerable<User> _persons = Enumerable.Empty<User>();
+    private readonly IUserService _userService;
 
-    public CommonPage() {
+    private PageResult<User> _usersPage = new();
+
+    public CommonPage(IUserService userService) {
+        _userService = userService;
+
         InitializeComponent();
+        GetUsersAsync();
     }
 
-    private IEnumerable<User> GetPersonRecords() {
-        _persons = new List<User>();
+    private async void GetUsersAsync() {
+        _usersPage = await _userService.GetUsersAsync(new GetUsersPageContext() {
+            Page = 1,
+            Count = 10,
+            Role = RoleType.Default
+        });
 
-        return _persons;
+        UsersView.ItemsSource = _usersPage.Data;
     }
 
     private async void SetScene(object sender, EventArgs args) {

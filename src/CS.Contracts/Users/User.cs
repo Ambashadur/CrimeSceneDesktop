@@ -12,6 +12,8 @@ public class User
 
     public long? SceneId { get; set; }
 
+    public string SceneName { get; set; }
+
     public RoleType Role { get; set; }
 
     public string Login { get; set;} = string.Empty;

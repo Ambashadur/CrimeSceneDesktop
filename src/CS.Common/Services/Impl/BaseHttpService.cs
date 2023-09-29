@@ -16,5 +16,6 @@ public abstract class BaseHttpService
 
         _options = new();
         _options.Converters.Add(new JsonStringEnumConverter());
+        _options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     }
 }

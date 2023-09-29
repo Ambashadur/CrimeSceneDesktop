@@ -9,6 +9,103 @@
         HorizontalOptions="Center"
         Padding="10">
 
+        <FlexLayout
+            Direction="Column"
+            JustifyContent="SpaceBetween"
+            AlignContent="Center">
+
+            <!-- Header -->
+            <Frame
+                Margin="0"
+                Padding="5,2"
+                BackgroundColor="#212529"
+                BorderColor="#212529"
+                HeightRequest="64">
+
+                <FlexLayout
+                    Direction="Row"
+                    JustifyContent="SpaceBetween"
+                    AlignContent="Center">
+
+                    <Label
+                        Text="ID"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="16"
+                        FontFamily="Inter"
+                        TextColor="#fff" />
+
+                    <Label
+                        Text="ФИО"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="16"
+                        FontFamily="Inter"
+                        TextColor="#fff" />
+
+                    <Label
+                        Text="Название сцены"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="16"
+                        FontFamily="Inter"
+                        TextColor="#fff" />
+
+                </FlexLayout>
+
+            </Frame>
+
+            <!-- Body -->
+            <Frame
+                BackgroundColor="#fff"
+                BorderColor="#fff">
+                <!-- TODO:Cycle layout error -->
+                <CollectionView x:Name="UsersView">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
+                    </CollectionView.ItemsLayout>
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame>
+                                <FlexLayout Direction="Row">
+                                    <Label
+                                        Text="{Binding Id}"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="16"
+                                        FontFamily="Inter"
+                                        TextColor="black"/>
+
+                                    <Label
+                                        Text="{Binding FirstName}"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="16"
+                                        FontFamily="Inter"
+                                        TextColor="black"/>
+
+                                    <Label
+                                        Text="{Binding SceneName}"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="16"
+                                        FontFamily="Inter"
+                                        TextColor="black"/>
+                                </FlexLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+            </Frame>
+
+            <!-- Footer -->
+            <Frame>
+                
+            </Frame>
+        </FlexLayout>
+
     </HorizontalStackLayout>
 
 </ContentPage>
