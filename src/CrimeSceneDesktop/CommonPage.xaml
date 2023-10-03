@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CS.Common.ViewModels;assembly=CS.Common"
+             xmlns:triggers="clr-namespace:CS.Common.Triggers;assembly=CS.Common"
              x:Class="CrimeSceneDesktop.CommonPage"
              Title="CommonPage">
+
+    <ContentPage.BindingContext>
+        <local:UsersViewModel/>
+    </ContentPage.BindingContext>
 
     <HorizontalStackLayout
         VerticalOptions="Center"
@@ -52,60 +58,155 @@
                         TextColor="#fff" />
 
                 </FlexLayout>
-
             </Frame>
 
             <!-- Body -->
-            <Frame
-                BackgroundColor="#fff"
-                BorderColor="#fff">
-                <!-- TODO:Cycle layout error -->
-                <CollectionView x:Name="UsersView">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
-                    </CollectionView.ItemsLayout>
-                    
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame>
-                                <FlexLayout Direction="Row">
-                                    <Label
-                                        Text="{Binding Id}"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"
-                                        FontSize="16"
-                                        FontFamily="Inter"
-                                        TextColor="black"/>
+            <CollectionView
+                x:Name="UsersCollection"
+                SelectionMode="Single"
+                ItemsSource="{Binding Users}"
+                SelectedItem="{Binding User}"
+                SelectionChanged="UserSelectionChanged">
 
-                                    <Label
-                                        Text="{Binding FirstName}"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"
-                                        FontSize="16"
-                                        FontFamily="Inter"
-                                        TextColor="black"/>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
+                </CollectionView.ItemsLayout>
 
-                                    <Label
-                                        Text="{Binding SceneName}"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"
-                                        FontSize="16"
-                                        FontFamily="Inter"
-                                        TextColor="black"/>
-                                </FlexLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                
-            </Frame>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Stroke="#212529"
+                            StrokeShape="RoundRectangle 8"
+                            HorizontalOptions="Center"
+                            Padding="8">
+                            
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
 
-            <!-- Footer -->
-            <Frame>
-                
-            </Frame>
+                                    <VisualState x:Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="BackgroundColor"
+                                                Value="#65696d" />
+
+                                            <Setter
+                                                Property="Stroke"
+                                                Value="#111519" />
+
+                                            <Setter
+                                                TargetName="id"
+                                                Property="Label.TextColor"
+                                                Value="#ffffff" />
+
+                                            <Setter
+                                                TargetName="lastName"
+                                                Property="Label.TextColor"
+                                                Value="#ffffff" />
+
+                                            <Setter
+                                                TargetName="firstName"
+                                                Property="Label.TextColor"
+                                                Value="#ffffff" />
+
+                                            <Setter
+                                                TargetName="sceneName"
+                                                Property="Label.TextColor"
+                                                Value="#ffffff" />
+
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                    <!--<VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="BackgroundColor"
+                                                Value="#bfc3c7" />
+                                        </VisualState.Setters>
+                                    </VisualState>-->
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <HorizontalStackLayout Spacing="8">
+                                <Label
+                                    x:Name="id"
+                                    Text="{Binding Id}"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="16"
+                                    FontFamily="Inter"
+                                    TextColor="black"/>
+
+                                <Label
+                                    x:Name="lastName"
+                                    Text="{Binding LastName}"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="16"
+                                    FontFamily="Inter"
+                                    TextColor="black" />
+
+                                <Label
+                                    x:Name="firstName"
+                                    Text="{Binding FirstName}"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="16"
+                                    FontFamily="Inter"
+                                    TextColor="black" />
+
+                                <Label
+                                    x:Name="sceneName"
+                                    Text="{Binding SceneName}"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="16"
+                                    FontFamily="Inter"
+                                    TextColor="black"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--  Footer  -->
+            <HorizontalStackLayout>
+                <Border
+                    Stroke="#27282F"
+                    StrokeShape="RoundRectangle 8"
+                    Background="#27282F"
+                    HorizontalOptions="Center">
+
+                    <Picker
+                        BackgroundColor="#27282F"
+                        TextColor="#fff"
+                        SelectedItem="{Binding Count}">
+
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:Int32}">
+                                <x:Int32>1</x:Int32>
+                                <x:Int32>5</x:Int32>
+                                <x:Int32>10</x:Int32>
+                                <x:Int32>15</x:Int32>
+                                <x:Int32>20</x:Int32>
+                                <x:Int32>25</x:Int32>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
+            </HorizontalStackLayout>
         </FlexLayout>
 
+        <VerticalStackLayout>
+            <Button
+                Text="Обновить страницу"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#fff"
+                BackgroundColor="#27282F"
+                Command="{Binding UpdatePageCommand}"/>
+
+        </VerticalStackLayout>
     </HorizontalStackLayout>
 
 </ContentPage>

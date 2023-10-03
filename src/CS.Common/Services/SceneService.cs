@@ -3,14 +3,14 @@ using CS.Contracts.Scenes;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
-namespace CS.Common.Services.Impl;
+namespace CS.Common.Services;
 
-public class SceneService : BaseHttpService, ISceneService
+public class SceneService : BaseHttpService
 {
     private const string CREATE_SCENE = "api/scenes";
     private const string SCENE_PAGE = "api/scenes/page";
 
-    public async Task<Scene?> CreateSceneAsync(string name, Stream filestream, string contentType, string filename) {
+    public async Task<Scene> CreateSceneAsync(string name, Stream filestream, string contentType, string filename) {
         using var multipartFormContent = new MultipartFormDataContent();
         multipartFormContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data");
 

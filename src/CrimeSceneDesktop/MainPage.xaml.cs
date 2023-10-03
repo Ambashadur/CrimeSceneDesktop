@@ -1,24 +1,21 @@
-﻿using CS.Common.Exceptions;
+﻿using System;
+using CS.Common.Exceptions;
 using CS.Common.Services;
 using CS.Contracts.Sso;
 using Microsoft.Maui.Controls;
-using System;
 
 namespace CrimeSceneDesktop;
 
 public partial class MainPage : ContentPage
 {
-    private readonly ISsoService _ssoService;
-    private readonly IExceptionHandler _exceptionHandler;
+    private readonly ExceptionHandler _exceptionHandler;
+    private readonly SsoService _ssoService;
 
-    public MainPage(ISsoService ssoService, IExceptionHandler exceptionHandler)
-    {
-        _ssoService = ssoService;
-        _exceptionHandler = exceptionHandler;
-
-        _exceptionHandler.DisplayException += DisplayAlert;
-
+    public MainPage() {
         InitializeComponent();
+
+        _exceptionHandler = new ExceptionHandler();
+        _ssoService = new SsoService();
     }
 
     private async void OnLoginClicked(object? sender, EventArgs e) {

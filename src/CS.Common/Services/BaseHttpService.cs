@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace CS.Common.Services.Impl;
+namespace CS.Common.Services;
 
 public abstract class BaseHttpService
 {
@@ -9,8 +9,7 @@ public abstract class BaseHttpService
     protected readonly JsonSerializerOptions _options;
 
     protected BaseHttpService() {
-        _httpClient = new HttpClient
-        {
+        _httpClient = new HttpClient {
             BaseAddress = new Uri("http://localhost:5197")
         };
 

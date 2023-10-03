@@ -2,9 +2,9 @@
 using CS.Contracts.Sso;
 using CS.Contracts.Users;
 
-namespace CS.Common.Services.Impl;
+namespace CS.Common.Services;
 
-public class SsoService : BaseHttpService, ISsoService
+public class SsoService : BaseHttpService
 {
     public string JWTToken => _token;
 

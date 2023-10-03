@@ -1,35 +1,19 @@
-using CS.Common.Services;
-using CS.Contracts;
-using CS.Contracts.Users;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Storage;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using CS.Common.ViewModels;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Storage;
 
 namespace CrimeSceneDesktop;
 
 public partial class CommonPage : ContentPage
 {
-    private readonly IUserService _userService;
+    private long CurrentUserId { get; set; }
 
-    private PageResult<User> _usersPage = new();
-
-    public CommonPage(IUserService userService) {
-        _userService = userService;
-
+    public CommonPage() {
         InitializeComponent();
-        GetUsersAsync();
-    }
-
-    private async void GetUsersAsync() {
-        _usersPage = await _userService.GetUsersAsync(new GetUsersPageContext() {
-            Page = 1,
-            Count = 10,
-            Role = RoleType.Default
-        });
-
-        UsersView.ItemsSource = _usersPage.Data;
     }
 
     private async void SetScene(object sender, EventArgs args) {
@@ -54,5 +38,10 @@ public partial class CommonPage : ContentPage
         using var response = await httpClient.SendAsync(message);
 
         response.EnsureSuccessStatusCode();
+    }
+
+    private void UserSelectionChanged(object sender, SelectionChangedEventArgs e) {
+        var currentSelection = e.CurrentSelection.First() as UserViewModel;
+        CurrentUserId = currentSelection.Id;
     }
 }

@@ -2,9 +2,9 @@
 using CS.Contracts.Users;
 using System.Net.Http.Json;
 
-namespace CS.Common.Services.Impl;
+namespace CS.Common.Services;
 
-public class UserService : BaseHttpService, IUserService
+public class UserService : BaseHttpService
 {
     private const string USERS_PAGE = "api/users/page";
 

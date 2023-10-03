@@ -1,20 +1,15 @@
 ﻿using System.Text;
 
-namespace CS.Common.Exceptions.Impl;
+namespace CS.Common.Exceptions;
 
-public class ExceptionHandler : IExceptionHandler
+public class ExceptionHandler
 {
-    public event Func<string, string, string, Task> DisplayException {
-        add => _diplayException += value;
-        remove => _diplayException -= value;
-    }
-
-    private event Func<string, string, string, Task> _diplayException;
-
     private readonly StringBuilder _sb;
+    private readonly Page _mainPage;
 
     public ExceptionHandler() {
         _sb = new StringBuilder();
+        _mainPage = Application.Current.MainPage;
     }
 
     public async Task Handle(Func<Task> func) {
@@ -28,10 +23,10 @@ public class ExceptionHandler : IExceptionHandler
                 _sb.Append(rex.StatusCode);
             }
 
-            await _diplayException?.Invoke("Сетевая ошибка", _sb.ToString(), "ОК");
+            await _mainPage.DisplayAlert("Сетевая ошибка", _sb.ToString(), "ОК");
             _sb.Clear();
         } catch (Exception ex) {
-            await _diplayException?.Invoke("Ошибка", ex.Message, "ОК");
+            await _mainPage.DisplayAlert("Ошибка", ex.Message, "ОК");
         }
     }
 }
