@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 
 namespace CS.Common.Services;
 
-public class SceneService : BaseHttpService
+public class SceneService
 {
     private const string CREATE_SCENE = "api/scenes";
     private const string SCENE_PAGE = "api/scenes/page";
@@ -24,20 +24,20 @@ public class SceneService : BaseHttpService
             Content = multipartFormContent
         };
 
-        using var response = await _httpClient.SendAsync(request);
+        using var response = await CSDHttpClient.Client.SendAsync(request);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<Scene>(options: _options);
+        return await response.Content.ReadFromJsonAsync<Scene>(options: CSDHttpClient.JsonOptions);
     }
 
     public async Task<PageResult<Scene>> GetScenePageAsync(GetPageContext context) {
         var request = new HttpRequestMessage(HttpMethod.Post, SCENE_PAGE) {
-            Content = JsonContent.Create(context, options: _options)
+            Content = JsonContent.Create(context, options: CSDHttpClient.JsonOptions)
         };
 
-        using var response = await _httpClient.SendAsync(request);
+        using var response = await CSDHttpClient.Client.SendAsync(request);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<PageResult<Scene>>(options: _options);
+        return await response.Content.ReadFromJsonAsync<PageResult<Scene>>(options: CSDHttpClient.JsonOptions);
     }
 }

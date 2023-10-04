@@ -26,12 +26,13 @@
                 Padding="5,2"
                 BackgroundColor="#212529"
                 BorderColor="#212529"
-                HeightRequest="64">
+                HeightRequest="42">
 
                 <FlexLayout
                     Direction="Row"
                     JustifyContent="SpaceBetween"
-                    AlignContent="Center">
+                    AlignContent="Center"
+                    WidthRequest="400">
 
                     <Label
                         Text="ID"
@@ -65,8 +66,7 @@
                 x:Name="UsersCollection"
                 SelectionMode="Single"
                 ItemsSource="{Binding Users}"
-                SelectedItem="{Binding User}"
-                SelectionChanged="UserSelectionChanged">
+                SelectedItem="{Binding User}">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
@@ -200,12 +200,21 @@
         <VerticalStackLayout>
             <Button
                 Text="Обновить страницу"
+                HeightRequest="42"
                 FontFamily="Inter"
                 FontSize="16"
                 TextColor="#fff"
                 BackgroundColor="#27282F"
                 Command="{Binding UpdatePageCommand}"/>
 
+            <Button
+                Text="Выйти из аккаунта"
+                HeightRequest="42"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#ffffff"
+                Background="#27282F"
+                Clicked="Logout" />
         </VerticalStackLayout>
     </HorizontalStackLayout>
 

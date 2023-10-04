@@ -1,8 +1,8 @@
 using System;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using CS.Common.ViewModels;
+using CS.Common.Exceptions;
+using CS.Common.Services;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
 
@@ -10,10 +10,14 @@ namespace CrimeSceneDesktop;
 
 public partial class CommonPage : ContentPage
 {
-    private long CurrentUserId { get; set; }
+    private readonly SsoService _ssoService;
+    private readonly ExceptionHandler _exceptionHandler;
 
     public CommonPage() {
         InitializeComponent();
+
+        _ssoService = new SsoService();
+        _exceptionHandler = new ExceptionHandler();
     }
 
     private async void SetScene(object sender, EventArgs args) {
@@ -40,8 +44,10 @@ public partial class CommonPage : ContentPage
         response.EnsureSuccessStatusCode();
     }
 
-    private void UserSelectionChanged(object sender, SelectionChangedEventArgs e) {
-        var currentSelection = e.CurrentSelection.First() as UserViewModel;
-        CurrentUserId = currentSelection.Id;
+    private async void Logout(object sender, EventArgs e) {
+        await _exceptionHandler.Handle(async () => {
+            await _ssoService.LogoutAsync();
+            await Shell.Current.GoToAsync("//mainPage", true);
+        });
     }
 }
