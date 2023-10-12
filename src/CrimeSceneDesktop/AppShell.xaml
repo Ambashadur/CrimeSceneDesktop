@@ -8,7 +8,7 @@
     Shell.BackgroundColor="#212529">
 
     <ShellContent
-        Title="Home"
+        Title="Login"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="mainPage" />
 
@@ -16,5 +16,10 @@
         Title="Workers"
         ContentTemplate="{DataTemplate local:CommonPage}"
         Route="commonPage" />
+
+    <ShellContent
+        Title="Create scene"
+        ContentTemplate="{DataTemplate local:CreateScenePage}"
+        Route="createScenePage"/>
 
 </Shell>

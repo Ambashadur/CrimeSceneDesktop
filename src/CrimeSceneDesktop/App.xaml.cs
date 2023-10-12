@@ -13,5 +13,6 @@ public partial class App : Application
 
         Routing.RegisterRoute("commonPage", typeof(CommonPage));
         Routing.RegisterRoute("mainPage", typeof(MainPage));
+        Routing.RegisterRoute("createScenePage", typeof(CreateScenePage));
     }
 }

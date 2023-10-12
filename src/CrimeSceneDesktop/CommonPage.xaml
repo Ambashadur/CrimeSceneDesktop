@@ -7,7 +7,7 @@
              Title="CommonPage">
 
     <ContentPage.BindingContext>
-        <local:UsersViewModel/>
+        <local:UsersViewModel />
     </ContentPage.BindingContext>
 
     <HorizontalStackLayout
@@ -204,7 +204,7 @@
                 FontFamily="Inter"
                 FontSize="16"
                 TextColor="#fff"
-                BackgroundColor="#27282F"
+                BackgroundColor="#27282f"
                 Command="{Binding UpdatePageCommand}"/>
 
             <Button
@@ -215,6 +215,15 @@
                 TextColor="#ffffff"
                 Background="#27282F"
                 Clicked="Logout" />
+
+            <Button
+                Text="Создать новую сцену"
+                HeightRequest="42"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#ffffff"
+                BackgroundColor="#27282f"
+                Clicked="CreateScene" />
         </VerticalStackLayout>
     </HorizontalStackLayout>
 

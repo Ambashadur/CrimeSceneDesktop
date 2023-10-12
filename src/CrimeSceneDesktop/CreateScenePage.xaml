@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CS.Common.ViewModels;assembly=CS.Common"
+             x:Class="CrimeSceneDesktop.CreateScenePage"
+             Title="CreateScenePage">
+
+    <ContentPage.BindingContext>
+        <local:SceneViewModel />
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout Spacing="10">
+        <HorizontalStackLayout Spacing="10" Padding="10">
+            <Button
+                Text="Назад"
+                HeightRequest="42"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#ffffff"
+                BackgroundColor="#27282f"
+                Clicked="GoToCommonPage"
+                HorizontalOptions="Start"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+            <Border
+                Stroke="#27282f"
+                StrokeShape="RoundRectangle 8"
+                Background="#ffffff"
+                WidthRequest="150">
+
+                <Label
+                    Text="Название сцены"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    HeightRequest="42"
+                    WidthRequest="150"
+                    FontSize="16"
+                    FontFamily="Inter"
+                    TextColor="Black"
+                    BackgroundColor="#ffffff" />
+            </Border>
+
+            <Entry
+                MaxLength="128"
+                Placeholder="Начните вводить текст..."
+                Text="{Binding Name}"
+                FontSize="16"
+                TextColor="#191970"
+                BackgroundColor="#ffffff"
+                WidthRequest="256"
+                HeightRequest="42"
+                PlaceholderColor="#A9A9A9"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+            <Button
+                Text="Выбрать файл"
+                HeightRequest="42"
+                WidthRequest="150"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#ffffff"
+                BackgroundColor="#27282f"
+                Command="{Binding PickFileCommand}"/>
+
+            <Label
+                Text="{Binding File.FileName}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                HeightRequest="42"
+                WidthRequest="256"
+                FontSize="16"
+                FontFamily="Inter"
+                TextColor="#27282f" />
+        </HorizontalStackLayout>
+
+        <Button
+            Text="Создать"
+            HeightRequest="42"
+            WidthRequest="406"
+            FontFamily="Inter"
+            FontSize="16"
+            TextColor="#ffffff"
+            BackgroundColor="#27282f"
+            HorizontalOptions="Center"
+            Command="{Binding CreateSceneCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

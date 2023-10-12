@@ -1,67 +1,94 @@
 ﻿using CS.Contracts.Users;
 
 namespace CS.Common.ViewModels;
+
 public class UserViewModel : BaseViewModel
 {
-    private long _id;
-    private string _firstName;
-    private string _lastName;
-    private string _paternalName;
-    private long? _sceneId;
-    private string _sceneName;
-    private RoleType _role;
-    private string _login;
+    private User _user = new();
 
     public long Id {
-        set => SetProperty(ref _id, value);
-        get => _id;
+        get => _user.Id;
+        set {
+            if (_user.Id != value) {
+                _user.Id = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public string FirstName {
-        set => SetProperty(ref _firstName, value);
-        get => _firstName;
+        get => _user.FirstName;
+        set {
+            if (_user.FirstName != value) {
+                _user.FirstName = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public string LastName {
-        set => SetProperty(ref _lastName, value);
-        get => _lastName;
+        get => _user.LastName;
+        set {
+            if (_user.LastName != value) {
+                _user.LastName = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public string PaternalName {
-        set => SetProperty(ref _paternalName, value);
-        get => _paternalName;
+        get => _user.PaternalName;
+        set {
+            if (_user.PaternalName != value) {
+                _user.PaternalName = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public long? SceneId {
-        set => SetProperty(ref _sceneId, value);
-        get => _sceneId;
+        get => _user.SceneId;
+        set {
+            if (_user.SceneId != value) {
+                _user.SceneId = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public string SceneName {
-        set => SetProperty(ref _sceneName, value);
-        get => _sceneName;
+        get => _user.SceneName;
+        set {
+            if (_user.SceneName != value) {
+                _user.SceneName = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public RoleType Role {
-        set => SetProperty(ref _role, value);
-        get => _role;
+        get => _user.Role;
+        set {
+            if (_user.Role != value) {
+                _user.Role = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public string Login {
-        set => SetProperty(ref _login, value);
-        get => _login;
+        get => _user.Login;
+        set {
+            if (_user.Login != value) {
+                _user.Login = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public UserViewModel() { }
 
     public UserViewModel(User user) {
-        _id = user.Id;
-        _firstName = user.FirstName;
-        _lastName = user.LastName;
-        _paternalName = user.PaternalName;
-        _sceneId = user.SceneId;
-        _sceneName = user.SceneName;
-        _role = user.Role;
-        _login = user.Login;
+        _user = user;
     }
 }
