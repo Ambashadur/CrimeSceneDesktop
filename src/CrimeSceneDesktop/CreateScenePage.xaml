@@ -8,20 +8,8 @@
     <ContentPage.BindingContext>
         <local:SceneViewModel />
     </ContentPage.BindingContext>
-    
-    <VerticalStackLayout Spacing="10">
-        <HorizontalStackLayout Spacing="10" Padding="10">
-            <Button
-                Text="Назад"
-                HeightRequest="42"
-                FontFamily="Inter"
-                FontSize="16"
-                TextColor="#ffffff"
-                BackgroundColor="#27282f"
-                Clicked="GoToCommonPage"
-                HorizontalOptions="Start"/>
-        </HorizontalStackLayout>
 
+    <VerticalStackLayout Spacing="10" VerticalOptions="Center">
         <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
             <Border
                 Stroke="#27282f"

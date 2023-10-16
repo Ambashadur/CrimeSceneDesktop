@@ -10,6 +10,6 @@ public partial class CreateScenePage : ContentPage
     }
 
     private async void GoToCommonPage(object sender, EventArgs e) {
-        await Shell.Current.GoToAsync("//commonPage", true);
+        await Shell.Current.GoToAsync("commonPage", true);
     }
 }

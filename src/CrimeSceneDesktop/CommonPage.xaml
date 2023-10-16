@@ -5,11 +5,6 @@
              xmlns:triggers="clr-namespace:CS.Common.Triggers;assembly=CS.Common"
              x:Class="CrimeSceneDesktop.CommonPage"
              Title="CommonPage">
-
-    <ContentPage.BindingContext>
-        <local:UsersViewModel />
-    </ContentPage.BindingContext>
-
     <HorizontalStackLayout
         VerticalOptions="Center"
         HorizontalOptions="Center"
@@ -66,7 +61,7 @@
                 x:Name="UsersCollection"
                 SelectionMode="Single"
                 ItemsSource="{Binding Users}"
-                SelectedItem="{Binding User}">
+                SelectedItem="{Binding CurrentUser}">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
@@ -228,15 +223,7 @@
                 FontSize="16"
                 TextColor="#ffffff"
                 BackgroundColor="#27282f"
-                Clicked="CreateScene" />
-
-            <Picker
-                BindingContext="{local:ScenesViewModel}"
-                BackgroundColor="#27282F"
-                TextColor="#fff"
-                SelectedItem="{Binding CurrentScene}"
-                ItemsSource="{Binding Scenes}">
-            </Picker>
+                Clicked="GoToCreateScenePage" />
 
             <Button
                 Text="Выбрать сцену для пользователя"
@@ -244,7 +231,8 @@
                 FontFamily="Inter"
                 FontSize="16"
                 TextColor="#ffffff"
-                Background="#27282f" />
+                Background="#27282f"
+                Clicked="GoToUserPage" />
         </VerticalStackLayout>
     </HorizontalStackLayout>
 

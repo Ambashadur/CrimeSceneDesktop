@@ -15,7 +15,7 @@ public class UsersViewModel : BaseViewModel
 
     public ICommand UpdatePageCommand { get; private set; }
 
-    public UserViewModel CurrentScene {
+    public UserViewModel CurrentUser {
         set => SetProperty(ref _user, value);
         get => _user;
     }

@@ -10,12 +10,11 @@ public class ScenesViewModel : BaseViewModel
     private readonly SceneService _sceneService;
 
     private Scene _currentScene;
-    private IEnumerable<Scene> _scenes;
+    private List<Scene> _scenes;
     private int _page = 1;
     private int _count = 25;
 
     public ICommand GetScenesPage { get; private set; }
-    public ICommand SetSceneByNameCommand { get; private set; }
 
     public Scene CurrentScene {
         get => _currentScene;
@@ -27,7 +26,7 @@ public class ScenesViewModel : BaseViewModel
         }
     }
 
-    public IEnumerable<Scene> Scenes {
+    public List<Scene> Scenes {
         get => _scenes;
         set {
             if (_scenes != value) {
@@ -62,9 +61,6 @@ public class ScenesViewModel : BaseViewModel
 
         GetScenesPage = new Command(
             execute: async () => await _exceptionHandler.Handle(UpdatePageAsync));
-
-        SetSceneByNameCommand = new Command(
-            execute: (sceneName) => CurrentScene = _scenes.First(x => x.Name == sceneName.ToString()));
     }
 
     private async Task UpdatePageAsync() {
@@ -73,6 +69,6 @@ public class ScenesViewModel : BaseViewModel
             Count = _count
         });
 
-        Scenes = pageResult.Data;
+        Scenes = pageResult.Data.ToList();
     }
 }

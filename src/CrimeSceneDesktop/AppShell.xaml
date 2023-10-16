@@ -22,4 +22,9 @@
         ContentTemplate="{DataTemplate local:CreateScenePage}"
         Route="createScenePage"/>
 
+    <ShellContent
+        Title="User page"
+        ContentTemplate="{DataTemplate local:UserPage}"
+        Route="userPage" />
+
 </Shell>

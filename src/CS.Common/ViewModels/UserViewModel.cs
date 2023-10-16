@@ -4,7 +4,7 @@ namespace CS.Common.ViewModels;
 
 public class UserViewModel : BaseViewModel
 {
-    private User _user = new();
+    private readonly User _user = new();
 
     public long Id {
         get => _user.Id;

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrimeSceneDesktop.UserPage"
+             Title="UserPage">
+
+    <FlexLayout
+        x:Name="UserView"
+        Direction="Column"
+        HorizontalOptions="Center"
+        MaximumWidthRequest="400"
+        AlignContent="Center"
+        JustifyContent="SpaceAround">
+
+        <VerticalStackLayout Spacing="5">
+            <Label
+                Text="Имя"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Start"
+                HeightRequest="24"
+                FontSize="16"
+                FontFamily="Inter"
+                TextColor="Black"
+                BackgroundColor="#ffffff" />
+
+            <Border
+                Stroke="#27282f"
+                StrokeShape="RoundRectangle 8"
+                Background="#ffffff">
+
+                <Entry
+                    Placeholder="Начните вводить текст..."
+                    Text="{Binding FirstName}"
+                    MaxLength="128"
+                    FontSize="20"
+                    BackgroundColor="#ffffff"
+                    HeightRequest="36"
+                    PlaceholderColor="#a9a9a9" />
+            </Border>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Spacing="5">
+            <Label
+                Text="Фамилия"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                HeightRequest="24"
+                FontSize="16"
+                FontFamily="Inter"
+                TextColor="Black"
+                BackgroundColor="#ffffff" />
+
+            <Border
+                Stroke="#27282f"
+                StrokeShape="RoundRectangle 8"
+                Background="#ffffff">
+
+                <Entry
+                    Placeholder="Начните вводить текст..."
+                    Text="{Binding LastName}"
+                    MaxLength="128"
+                    FontSize="20"
+                    BackgroundColor="#ffffff"
+                    HeightRequest="36"
+                    PlaceholderColor="#a9a9a9" />
+            </Border>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Spacing="5">
+            <Label
+                Text="Отчество"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                HeightRequest="24"
+                FontSize="16"
+                FontFamily="Inter"
+                TextColor="Black"
+                BackgroundColor="#ffffff" />
+
+            <Border
+                Stroke="#27282f"
+                StrokeShape="RoundRectangle 8"
+                Background="#ffffff">
+
+                <Entry
+                    Placeholder="Начните вводить текст..."
+                    Text="{Binding PaternalName}"
+                    MaxLength="128"
+                    FontSize="20"
+                    BackgroundColor="#ffffff"
+                    HeightRequest="36"
+                    PlaceholderColor="#a9a9a9" />
+            </Border>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Spacing="5">
+            <Label
+                Text="Логин"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                HeightRequest="24"
+                FontSize="16"
+                FontFamily="Inter"
+                TextColor="Black"
+                BackgroundColor="#ffffff" />
+
+            <Border
+                Stroke="#27282f"
+                StrokeShape="RoundRectangle 8"
+                Background="#ffffff">
+
+                <Entry
+                    Placeholder="Начните вводить текст..."
+                    Text="{Binding Login}"
+                    MaxLength="128"
+                    FontSize="20"
+                    BackgroundColor="#ffffff"
+                    HeightRequest="36"
+                    PlaceholderColor="#a9a9a9"
+                    IsReadOnly="True"/>
+            </Border>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Spacing="5">
+            <Label
+                Text="Сцена"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                HeightRequest="24"
+                FontSize="16"
+                FontFamily="Inter"
+                TextColor="Black"
+                BackgroundColor="#ffffff" />
+
+            <Picker
+                x:Name="ScenePicker"/>
+        </VerticalStackLayout>
+    </FlexLayout>
+
+</ContentPage>
