@@ -1,10 +1,7 @@
 using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using CS.Common.Exceptions;
 using CS.Common.Services;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Storage;
 
 namespace CrimeSceneDesktop;
 

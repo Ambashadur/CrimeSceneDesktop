@@ -15,7 +15,7 @@ public class UsersViewModel : BaseViewModel
 
     public ICommand UpdatePageCommand { get; private set; }
 
-    public UserViewModel CurrentUser {
+    public UserViewModel CurrentScene {
         set => SetProperty(ref _user, value);
         get => _user;
     }
@@ -40,6 +40,8 @@ public class UsersViewModel : BaseViewModel
 
         UpdatePageCommand = new Command(
             execute: async () => await _exceptionHandler.Handle(UpdatePageAsync));
+
+        UpdatePageCommand.Execute(null);
     }
 
     private async Task UpdatePageAsync() {

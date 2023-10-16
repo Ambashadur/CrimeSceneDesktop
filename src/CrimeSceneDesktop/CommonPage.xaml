@@ -79,7 +79,7 @@
                             StrokeShape="RoundRectangle 8"
                             HorizontalOptions="Center"
                             Padding="8">
-                            
+
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">
                                     <VisualState x:Name="Normal" />
@@ -127,7 +127,12 @@
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
 
-                            <HorizontalStackLayout Spacing="8">
+                            <FlexLayout
+                                Direction="Row"
+                                JustifyContent="SpaceBetween"
+                                AlignContent="Center"
+                                WidthRequest="400">
+
                                 <Label
                                     x:Name="id"
                                     Text="{Binding Id}"
@@ -163,14 +168,14 @@
                                     FontSize="16"
                                     FontFamily="Inter"
                                     TextColor="black"/>
-                            </HorizontalStackLayout>
+                            </FlexLayout>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
             <!--  Footer  -->
-            <HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="End">
                 <Border
                     Stroke="#27282F"
                     StrokeShape="RoundRectangle 8"
@@ -197,7 +202,7 @@
             </HorizontalStackLayout>
         </FlexLayout>
 
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="10">
             <Button
                 Text="Обновить страницу"
                 HeightRequest="42"
@@ -224,6 +229,22 @@
                 TextColor="#ffffff"
                 BackgroundColor="#27282f"
                 Clicked="CreateScene" />
+
+            <Picker
+                BindingContext="{local:ScenesViewModel}"
+                BackgroundColor="#27282F"
+                TextColor="#fff"
+                SelectedItem="{Binding CurrentScene}"
+                ItemsSource="{Binding Scenes}">
+            </Picker>
+
+            <Button
+                Text="Выбрать сцену для пользователя"
+                HeightRequest="42"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#ffffff"
+                Background="#27282f" />
         </VerticalStackLayout>
     </HorizontalStackLayout>
 
