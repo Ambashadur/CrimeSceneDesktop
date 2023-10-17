@@ -1,4 +1,4 @@
-﻿using System.Windows.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using CS.Common.Services;
 using CS.Contracts;
 using CS.Contracts.Scenes;
@@ -14,7 +14,7 @@ public class ScenesViewModel : BaseViewModel
     private int _page = 1;
     private int _count = 25;
 
-    public ICommand GetScenesPage { get; private set; }
+    public IAsyncRelayCommand GetScenesPage { get; private set; }
 
     public Scene CurrentScene {
         get => _currentScene;
@@ -59,8 +59,10 @@ public class ScenesViewModel : BaseViewModel
     public ScenesViewModel() {
         _sceneService = new SceneService();
 
-        GetScenesPage = new Command(
-            execute: async () => await _exceptionHandler.Handle(UpdatePageAsync));
+        GetScenesPage = new AsyncRelayCommand(
+            execute: () => _exceptionHandler.Handle(UpdatePageAsync));
+
+        _scenes = new List<Scene> { new Scene { Id = -1, Name = "Не выбранно" } };
     }
 
     private async Task UpdatePageAsync() {
@@ -69,6 +71,7 @@ public class ScenesViewModel : BaseViewModel
             Count = _count
         });
 
-        Scenes = pageResult.Data.ToList();
+        _scenes.AddRange(pageResult.Data.ToList());
+        OnPropertyChanged(nameof(Scenes));
     }
 }

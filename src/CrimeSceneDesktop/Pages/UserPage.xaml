@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CrimeSceneDesktop.UserPage"
+             x:Class="CrimeSceneDesktop.Pages.UserPage"
              Title="UserPage">
 
     <FlexLayout
@@ -10,7 +10,8 @@
         HorizontalOptions="Center"
         MaximumWidthRequest="400"
         AlignContent="Center"
-        JustifyContent="SpaceAround">
+        JustifyContent="SpaceEvenly"
+        MinimumHeightRequest="430">
 
         <VerticalStackLayout Spacing="5">
             <Label
@@ -121,10 +122,10 @@
             </Border>
         </VerticalStackLayout>
 
-        <VerticalStackLayout Spacing="5">
+        <VerticalStackLayout Spacing="5" VerticalOptions="Fill">
             <Label
                 Text="Сцена"
-                VerticalOptions="Center"
+                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Start"
                 HeightRequest="24"
                 FontSize="16"
@@ -132,8 +133,18 @@
                 TextColor="Black"
                 BackgroundColor="#ffffff" />
 
-            <Picker
-                x:Name="ScenePicker"/>
+            <Border
+                Stroke="#27282f"
+                StrokeShape="RoundRectangle 8"
+                Background="#27282f"
+                HorizontalOptions="Fill">
+                
+                <Picker
+                    x:Name="ScenePicker"
+                    BackgroundColor="#27282f"
+                    TextColor="#ffffff"
+                    WidthRequest="400"/>
+            </Border>
         </VerticalStackLayout>
     </FlexLayout>
 

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 using CS.Common.Services;
 using CS.Contracts.Users;
 
@@ -13,7 +14,7 @@ public class UsersViewModel : BaseViewModel
     private int _page = 1;
     private int _count = 25;
 
-    public ICommand UpdatePageCommand { get; private set; }
+    public IAsyncRelayCommand UpdatePageCommand { get; private set; }
 
     public UserViewModel CurrentUser {
         set => SetProperty(ref _user, value);
@@ -38,8 +39,8 @@ public class UsersViewModel : BaseViewModel
     public UsersViewModel() {
         _userService = new UserService();
 
-        UpdatePageCommand = new Command(
-            execute: async () => await _exceptionHandler.Handle(UpdatePageAsync));
+        UpdatePageCommand = new AsyncRelayCommand(
+            execute: () => _exceptionHandler.Handle(UpdatePageAsync));
 
         UpdatePageCommand.Execute(null);
     }

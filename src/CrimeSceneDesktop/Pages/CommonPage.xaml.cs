@@ -5,13 +5,14 @@ using CS.Common.Services;
 using CS.Common.ViewModels;
 using Microsoft.Maui.Controls;
 
-namespace CrimeSceneDesktop;
+namespace CrimeSceneDesktop.Pages;
 
 public partial class CommonPage : ContentPage
 {
     private readonly SsoService _ssoService;
     private readonly ExceptionHandler _exceptionHandler;
     private readonly UsersViewModel _usersViewModel;
+    private readonly ScenesViewModel _scenesViewModel;
 
     public CommonPage() {
         InitializeComponent();
@@ -19,6 +20,7 @@ public partial class CommonPage : ContentPage
         _ssoService = new SsoService();
         _exceptionHandler = new ExceptionHandler();
         _usersViewModel = new UsersViewModel();
+        _scenesViewModel = new ScenesViewModel();
 
         BindingContext = _usersViewModel;
     }
@@ -40,8 +42,11 @@ public partial class CommonPage : ContentPage
             return;
         }
 
+        await _scenesViewModel.GetScenesPage.ExecuteAsync(null);
+
         await Shell.Current.GoToAsync("userPage", true, new Dictionary<string, object>() {
-            ["user"] = _usersViewModel.CurrentUser
+            ["user"] = _usersViewModel.CurrentUser,
+            ["scenes"] = _scenesViewModel
         });
     }
 }

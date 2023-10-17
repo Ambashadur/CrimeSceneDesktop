@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Maui.Controls;
 
-namespace CrimeSceneDesktop;
+namespace CrimeSceneDesktop.Pages;
 
 public partial class CreateScenePage : ContentPage
 {

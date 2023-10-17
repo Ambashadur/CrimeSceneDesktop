@@ -4,7 +4,7 @@ using CS.Common.Services;
 using CS.Contracts.Sso;
 using Microsoft.Maui.Controls;
 
-namespace CrimeSceneDesktop;
+namespace CrimeSceneDesktop.Pages;
 
 public partial class MainPage : ContentPage
 {

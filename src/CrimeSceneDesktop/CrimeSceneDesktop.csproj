@@ -56,19 +56,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="UserPage.xaml.cs">
+	  <Compile Update="Pages\UserPage.xaml.cs">
 	    <DependentUpon>UserPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="CommonPage.xaml">
+	  <MauiXaml Update="Pages\CommonPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CreateScenePage.xaml">
+	  <MauiXaml Update="Pages\CreateScenePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="UserPage.xaml">
+	  <MauiXaml Update="Pages\UserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

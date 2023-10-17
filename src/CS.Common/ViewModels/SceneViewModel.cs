@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 using CS.Common.Services;
 using CS.Contracts.Scenes;
 
@@ -11,8 +12,8 @@ public class SceneViewModel : BaseViewModel
     private Scene _scene = new();
     private FileResult _file;
 
-    public ICommand CreateSceneCommand { get; private set; }
-    public ICommand PickFileCommand { get; private set; }
+    public IAsyncRelayCommand CreateSceneCommand { get; private set; }
+    public IAsyncRelayCommand PickFileCommand { get; private set; }
 
     public long Id {
         get => _scene.Id;
@@ -47,10 +48,10 @@ public class SceneViewModel : BaseViewModel
     public SceneViewModel() {
         _sceneService = new SceneService();
 
-        CreateSceneCommand = new Command(
-            execute: async () => await _exceptionHandler.Handle(CreateScene));
+        CreateSceneCommand = new AsyncRelayCommand(
+            execute: () => _exceptionHandler.Handle(CreateScene));
 
-        PickFileCommand = new Command(
+        PickFileCommand = new AsyncRelayCommand(
             execute: async () => File = await FilePicker.Default.PickAsync(PickOptions.Images));
     }
 
