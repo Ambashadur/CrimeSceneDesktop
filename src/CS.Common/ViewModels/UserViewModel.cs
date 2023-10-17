@@ -1,9 +1,12 @@
-﻿using CS.Contracts.Users;
+﻿using CommunityToolkit.Mvvm.Input;
+using CS.Common.Services;
+using CS.Contracts.Users;
 
 namespace CS.Common.ViewModels;
 
 public class UserViewModel : BaseViewModel
 {
+    private readonly UserService _userService;
     private readonly User _user = new();
 
     public long Id {
@@ -86,9 +89,30 @@ public class UserViewModel : BaseViewModel
         }
     }
 
-    public UserViewModel() { }
+    public IAsyncRelayCommand UpdateUserCommand { get; set; }
+
+    public UserViewModel() {
+        _userService = new UserService();
+
+        UpdateUserCommand = new AsyncRelayCommand<long?>(
+            execute: (sceneId) => _exceptionHandler.Handle(() => SetUserScene(sceneId)));
+    }
 
     public UserViewModel(User user) {
         _user = user;
+
+        _userService = new UserService();
+
+        UpdateUserCommand = new AsyncRelayCommand<long?>(
+            (sceneId) => _exceptionHandler.Handle(() => SetUserScene(sceneId)));
+    }
+
+    private async Task SetUserScene(long? sceneId) {
+        if (sceneId.HasValue) {
+            SceneId = sceneId.Value == -1 ? null : sceneId.Value;
+
+            await _userService.SetUserSceneAsync(_user.Id, SceneId);
+            await Application.Current.MainPage.DisplayAlert("Уведомление", "Запись успешно обнавлена", "ОК");
+        }
     }
 }

@@ -9,14 +9,14 @@ public class ScenesViewModel : BaseViewModel
 {
     private readonly SceneService _sceneService;
 
-    private Scene _currentScene;
-    private List<Scene> _scenes;
+    private SceneViewModel _currentScene;
+    private List<SceneViewModel> _scenes;
     private int _page = 1;
     private int _count = 25;
 
     public IAsyncRelayCommand GetScenesPage { get; private set; }
 
-    public Scene CurrentScene {
+    public SceneViewModel CurrentScene {
         get => _currentScene;
         set {
             if (_currentScene != value) {
@@ -26,7 +26,7 @@ public class ScenesViewModel : BaseViewModel
         }
     }
 
-    public List<Scene> Scenes {
+    public List<SceneViewModel> Scenes {
         get => _scenes;
         set {
             if (_scenes != value) {
@@ -61,8 +61,6 @@ public class ScenesViewModel : BaseViewModel
 
         GetScenesPage = new AsyncRelayCommand(
             execute: () => _exceptionHandler.Handle(UpdatePageAsync));
-
-        _scenes = new List<Scene> { new Scene { Id = -1, Name = "Не выбранно" } };
     }
 
     private async Task UpdatePageAsync() {
@@ -71,7 +69,8 @@ public class ScenesViewModel : BaseViewModel
             Count = _count
         });
 
-        _scenes.AddRange(pageResult.Data.ToList());
+        _scenes = new List<SceneViewModel> { new SceneViewModel { Id = -1, Name = "Не выбранно" } };
+        _scenes.AddRange(pageResult.Data.Select(scene => new SceneViewModel { Id = scene.Id, Name = scene.Name }).ToList());
         OnPropertyChanged(nameof(Scenes));
     }
 }

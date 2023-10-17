@@ -1,5 +1,4 @@
-﻿using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using CS.Common.Services;
 using CS.Contracts.Users;
 
@@ -41,8 +40,6 @@ public class UsersViewModel : BaseViewModel
 
         UpdatePageCommand = new AsyncRelayCommand(
             execute: () => _exceptionHandler.Handle(UpdatePageAsync));
-
-        UpdatePageCommand.Execute(null);
     }
 
     private async Task UpdatePageAsync() {

@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using CS.Common.ViewModels;
 using CS.Contracts.Scenes;
 using Microsoft.Maui.Controls;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace CrimeSceneDesktop.Pages;
 
@@ -23,6 +23,7 @@ public partial class UserPage : ContentPage, IQueryAttributable
         ScenePicker.SetBinding(Picker.ItemsSourceProperty, nameof(ScenesViewModel.Scenes));
         ScenePicker.SetBinding(Picker.SelectedItemProperty, nameof(ScenesViewModel.CurrentScene));
         ScenePicker.ItemDisplayBinding = new Binding(nameof(Scene.Name));
+        ScenePicker.SelectedIndexChanged += (s, e) => SaveButton.CommandParameter = _scenes.CurrentScene?.Id;
 
         UserView.BindingContext = _user;
 

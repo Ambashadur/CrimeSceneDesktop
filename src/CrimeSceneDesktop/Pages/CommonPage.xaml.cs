@@ -25,6 +25,13 @@ public partial class CommonPage : ContentPage
         BindingContext = _usersViewModel;
     }
 
+    protected override void OnNavigatedTo(NavigatedToEventArgs args) {
+        base.OnNavigatedTo(args);
+
+        _usersViewModel.UpdatePageCommand.Execute(null);
+        _usersViewModel.CurrentUser = null;
+    }
+
     private async void Logout(object sender, EventArgs e) {
         await _exceptionHandler.Handle(async () => {
             await _ssoService.LogoutAsync();

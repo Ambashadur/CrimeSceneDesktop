@@ -13,6 +13,18 @@
         JustifyContent="SpaceEvenly"
         MinimumHeightRequest="430">
 
+        <VerticalStackLayout>
+            <Button
+                x:Name="SaveButton"
+                Text="Сохранить"
+                HeightRequest="42"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#ffffff"
+                BackgroundColor="#27282f"
+                Command="{Binding UpdateUserCommand}"/>
+        </VerticalStackLayout>
+        
         <VerticalStackLayout Spacing="5">
             <Label
                 Text="Имя"
@@ -36,7 +48,8 @@
                     FontSize="20"
                     BackgroundColor="#ffffff"
                     HeightRequest="36"
-                    PlaceholderColor="#a9a9a9" />
+                    PlaceholderColor="#a9a9a9"
+                    IsReadOnly="True"/>
             </Border>
         </VerticalStackLayout>
 
@@ -63,7 +76,8 @@
                     FontSize="20"
                     BackgroundColor="#ffffff"
                     HeightRequest="36"
-                    PlaceholderColor="#a9a9a9" />
+                    PlaceholderColor="#a9a9a9"
+                    IsReadOnly="True"/>
             </Border>
         </VerticalStackLayout>
 
@@ -90,7 +104,8 @@
                     FontSize="20"
                     BackgroundColor="#ffffff"
                     HeightRequest="36"
-                    PlaceholderColor="#a9a9a9" />
+                    PlaceholderColor="#a9a9a9"
+                    IsReadOnly="True"/>
             </Border>
         </VerticalStackLayout>
 

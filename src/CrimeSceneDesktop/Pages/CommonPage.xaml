@@ -8,11 +8,12 @@
     <HorizontalStackLayout
         VerticalOptions="Center"
         HorizontalOptions="Center"
-        Padding="10">
+        Padding="10"
+        Spacing="25">
 
         <FlexLayout
             Direction="Column"
-            JustifyContent="SpaceBetween"
+            JustifyContent="Center"
             AlignContent="Center">
 
             <!-- Header -->
@@ -137,23 +138,25 @@
                                     FontFamily="Inter"
                                     TextColor="black"/>
 
-                                <Label
-                                    x:Name="lastName"
-                                    Text="{Binding LastName}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center"
-                                    FontSize="16"
-                                    FontFamily="Inter"
-                                    TextColor="black" />
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label
+                                        x:Name="lastName"
+                                        Text="{Binding LastName}"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="16"
+                                        FontFamily="Inter"
+                                        TextColor="black" />
 
-                                <Label
-                                    x:Name="firstName"
-                                    Text="{Binding FirstName}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center"
-                                    FontSize="16"
-                                    FontFamily="Inter"
-                                    TextColor="black" />
+                                    <Label
+                                        x:Name="firstName"
+                                        Text="{Binding FirstName}"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="16"
+                                        FontFamily="Inter"
+                                        TextColor="black" />
+                                </HorizontalStackLayout>
 
                                 <Label
                                     x:Name="sceneName"
@@ -197,7 +200,10 @@
             </HorizontalStackLayout>
         </FlexLayout>
 
-        <VerticalStackLayout Spacing="10">
+        <VerticalStackLayout
+            Spacing="10"
+            VerticalOptions="Center">
+
             <Button
                 Text="Обновить страницу"
                 HeightRequest="42"
