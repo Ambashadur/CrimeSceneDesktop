@@ -6,5 +6,7 @@ public class PageResult<TData>
 
     public int Count { get; set; }
 
+    public int TotalCount { get; set; }
+
     public IEnumerable<TData> Data { get; set; } = Enumerable.Empty<TData>();
 }

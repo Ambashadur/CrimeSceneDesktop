@@ -24,7 +24,7 @@
                 BackgroundColor="#27282f"
                 Command="{Binding UpdateUserCommand}"/>
         </VerticalStackLayout>
-        
+
         <VerticalStackLayout Spacing="5">
             <Label
                 Text="Имя"

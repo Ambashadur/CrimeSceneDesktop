@@ -1,7 +1,8 @@
-﻿using CS.Contracts;
-using CS.Contracts.Scenes;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using CS.Contracts;
+using CS.Contracts.Scenes;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace CS.Common.Services;
 
@@ -31,9 +32,13 @@ public class SceneService
     }
 
     public async Task<PageResult<Scene>> GetScenePageAsync(GetPageContext context) {
-        var request = new HttpRequestMessage(HttpMethod.Post, SCENE_PAGE) {
-            Content = JsonContent.Create(context, options: CSDHttpClient.JsonOptions)
+        var query = new Dictionary<string, string>() {
+            [nameof(GetPageContext.Page)] = context.Page.ToString(),
+            [nameof(GetPageContext.Count)] = context.Count.ToString()
         };
+
+        var uri = QueryHelpers.AddQueryString(SCENE_PAGE, query);
+        var request = new HttpRequestMessage(HttpMethod.Get, uri);
 
         using var response = await CSDHttpClient.Client.SendAsync(request);
         response.EnsureSuccessStatusCode();

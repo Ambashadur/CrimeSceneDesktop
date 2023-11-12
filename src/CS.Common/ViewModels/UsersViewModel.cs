@@ -15,6 +15,8 @@ public class UsersViewModel : BaseViewModel
 
     public IAsyncRelayCommand UpdatePageCommand { get; private set; }
 
+    public int TotalCount { get; private set; }
+
     public UserViewModel CurrentUser {
         set => SetProperty(ref _user, value);
         get => _user;
@@ -43,12 +45,13 @@ public class UsersViewModel : BaseViewModel
     }
 
     private async Task UpdatePageAsync() {
-        var pageResult = await _userService.GetUsersAsync(new GetUsersPageContext() {
+        var pageResult = await _userService.GetUsersAsync(new() {
             Page = _page,
             Count = _count,
             Role = RoleType.Default
         });
 
+        TotalCount = pageResult.TotalCount;
         Users = pageResult.Data.Select(user => new UserViewModel(user));
     }
 }

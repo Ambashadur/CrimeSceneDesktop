@@ -98,13 +98,8 @@ public class UserViewModel : BaseViewModel
             execute: (sceneId) => _exceptionHandler.Handle(() => SetUserScene(sceneId)));
     }
 
-    public UserViewModel(User user) {
+    public UserViewModel(User user) : this() {
         _user = user;
-
-        _userService = new UserService();
-
-        UpdateUserCommand = new AsyncRelayCommand<long?>(
-            (sceneId) => _exceptionHandler.Handle(() => SetUserScene(sceneId)));
     }
 
     private async Task SetUserScene(long? sceneId) {

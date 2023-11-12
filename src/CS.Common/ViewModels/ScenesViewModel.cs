@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CS.Common.Services;
 using CS.Contracts;
-using CS.Contracts.Scenes;
 
 namespace CS.Common.ViewModels;
 
