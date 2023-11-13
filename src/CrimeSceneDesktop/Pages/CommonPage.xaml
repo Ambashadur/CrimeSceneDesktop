@@ -6,14 +6,14 @@
              x:Class="CrimeSceneDesktop.Pages.CommonPage"
              Title="CommonPage">
     <HorizontalStackLayout
-        VerticalOptions="Center"
+        VerticalOptions="Fill"
         HorizontalOptions="Center"
-        Padding="10"
-        Spacing="25">
+        Padding="8"
+        Spacing="32">
 
         <FlexLayout
             Direction="Column"
-            JustifyContent="Center"
+            JustifyContent="Start"
             AlignContent="Center">
 
             <!-- Header -->
@@ -200,9 +200,7 @@
             </HorizontalStackLayout>
         </FlexLayout>
 
-        <VerticalStackLayout
-            Spacing="10"
-            VerticalOptions="Center">
+        <VerticalStackLayout Spacing="10">
 
             <Button
                 Text="Обновить страницу"
@@ -239,6 +237,15 @@
                 TextColor="#ffffff"
                 Background="#27282f"
                 Clicked="GoToUserPage" />
+
+            <Button
+                Text="Просмотреть комментарии пользователя"
+                HeightRequest="42"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#ffffff"
+                Background="#27282f"
+                Clicked="GoToCommentsPage"/>
         </VerticalStackLayout>
     </HorizontalStackLayout>
 

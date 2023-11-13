@@ -8,23 +8,28 @@
     Shell.BackgroundColor="#212529">
 
     <ShellContent
-        Title="Login"
+        Title="Вход в аккаунт"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="mainPage" />
 
     <ShellContent
-        Title="Workers"
+        Title="Список студентов"
         ContentTemplate="{DataTemplate local:CommonPage}"
         Route="commonPage" />
 
     <ShellContent
-        Title="Create scene"
+        Title="Создание сцены"
         ContentTemplate="{DataTemplate local:CreateScenePage}"
         Route="createScenePage"/>
 
     <ShellContent
-        Title="User page"
+        Title="Информация о студенте"
         ContentTemplate="{DataTemplate local:UserPage}"
         Route="userPage" />
+
+    <ShellContent
+        Title="Комментарии студента"
+        ContentTemplate="{DataTemplate local:CommentsPage}"
+        Route="commentsPage" />
 
 </Shell>

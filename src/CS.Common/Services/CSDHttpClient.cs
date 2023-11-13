@@ -6,8 +6,11 @@ namespace CS.Common.Services;
 
 public static class CSDHttpClient
 {
+    private const string PATH_TEMPLATE = "{0}/{1}";
+    private const string BASE_PATH = "http://localhost:5197";
+
+    private readonly static Uri _baseAddress = new(BASE_PATH);
     private static HttpClient _httpClient;
-    private static Uri _baseAddress = new Uri("http://localhost:5197");
     private static string _jwtToken;
     private static JsonSerializerOptions _options;
 
@@ -39,4 +42,6 @@ public static class CSDHttpClient
     public static JsonSerializerOptions JsonOptions {
         get => _options;
     }
+
+    public static string GetLink(string relativePath) => string.Format(PATH_TEMPLATE, BASE_PATH, relativePath);
 }

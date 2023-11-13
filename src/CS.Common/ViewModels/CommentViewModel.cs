@@ -1,4 +1,5 @@
-﻿using CS.Contracts.Comments;
+﻿using CS.Common.Services;
+using CS.Contracts.Comments;
 
 namespace CS.Common.ViewModels;
 
@@ -40,7 +41,7 @@ public class CommentViewModel : BaseViewModel
         get => _comment.AudioLink;
         set {
             if (_comment.AudioLink != value) {
-                _comment.AudioLink = value;
+                _comment.AudioLink = CSDHttpClient.GetLink(value);
                 OnPropertyChanged();
             }
         }
@@ -50,7 +51,7 @@ public class CommentViewModel : BaseViewModel
         get => _comment.PhotoLink;
         set {
             if (_comment.PhotoLink != value) {
-                _comment.PhotoLink = value;
+                _comment.PhotoLink = CSDHttpClient.GetLink(value);
                 OnPropertyChanged();
             }
         }
@@ -60,5 +61,7 @@ public class CommentViewModel : BaseViewModel
 
     public CommentViewModel(Comment comment) : this() {
         _comment = comment;
+        _comment.PhotoLink = CSDHttpClient.GetLink(comment.PhotoLink);
+        _comment.AudioLink = CSDHttpClient.GetLink(comment.AudioLink);
     }
 }

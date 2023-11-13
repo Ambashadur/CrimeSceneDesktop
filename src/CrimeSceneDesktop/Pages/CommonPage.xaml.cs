@@ -56,4 +56,15 @@ public partial class CommonPage : ContentPage
             ["scenes"] = _scenesViewModel
         });
     }
+
+    private async void GoToCommentsPage(object sender, EventArgs e) {
+        if (_usersViewModel.CurrentUser is null) {
+            await DisplayAlert("Ошибка", "Вы не выбрали пользователя!", "Ок");
+            return;
+        }
+
+        await Shell.Current.GoToAsync("commentsPage", true, new Dictionary<string, object>() {
+            ["user"] = _usersViewModel.CurrentUser,
+        });
+    }
 }
