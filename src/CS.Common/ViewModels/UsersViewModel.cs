@@ -11,7 +11,7 @@ public class UsersViewModel : BaseViewModel
     private UserViewModel _user;
     private IEnumerable<UserViewModel> _users;
     private int _page = 1;
-    private int _count = 25;
+    private int _count = 100;
 
     public IAsyncRelayCommand UpdatePageCommand { get; private set; }
 

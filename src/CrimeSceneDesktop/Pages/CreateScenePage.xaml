@@ -9,69 +9,102 @@
         <local:SceneViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout Spacing="10" VerticalOptions="Center">
-        <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
-            <Border
-                Stroke="#27282f"
-                StrokeShape="RoundRectangle 8"
-                Background="#ffffff"
-                WidthRequest="150">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
 
-                <Label
-                    Text="Название сцены"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Center"
-                    HeightRequest="42"
-                    WidthRequest="150"
-                    FontSize="16"
-                    FontFamily="Inter"
-                    TextColor="Black"
-                    BackgroundColor="#ffffff" />
-            </Border>
+    <Grid Padding="64, 24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            <Entry
-                MaxLength="128"
-                Placeholder="Начните вводить текст..."
-                Text="{Binding Name}"
-                FontSize="16"
-                TextColor="#191970"
-                BackgroundColor="#ffffff"
-                WidthRequest="256"
-                HeightRequest="42"
-                PlaceholderColor="#A9A9A9"/>
-        </HorizontalStackLayout>
+        <FlexLayout
+            Direction="Row"
+            JustifyContent="SpaceBetween"
+            Grid.Column="0"
+            Grid.Row="0">
 
-        <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
             <Button
-                Text="Выбрать файл"
+                x:Name="BackButton"
+                Text="Назад"
                 HeightRequest="42"
-                WidthRequest="150"
                 FontFamily="Inter"
                 FontSize="16"
                 TextColor="#ffffff"
                 BackgroundColor="#27282f"
-                Command="{Binding PickFileCommand}"/>
+                Clicked="OnBackButtonClicked"/>
 
-            <Label
-                Text="{Binding File.FileName}"
-                VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Center"
+            <Button
+                x:Name="SaveButton"
+                Text="Сохранить"
                 HeightRequest="42"
-                WidthRequest="256"
-                FontSize="16"
                 FontFamily="Inter"
-                TextColor="#27282f" />
-        </HorizontalStackLayout>
+                FontSize="16"
+                TextColor="#ffffff"
+                BackgroundColor="#27282f"
+                Command="{Binding CreateSceneCommand}"/>
+        </FlexLayout>
 
-        <Button
-            Text="Создать"
-            HeightRequest="42"
-            WidthRequest="406"
-            FontFamily="Inter"
-            FontSize="16"
-            TextColor="#ffffff"
-            BackgroundColor="#27282f"
-            HorizontalOptions="Center"
-            Command="{Binding CreateSceneCommand}"/>
-    </VerticalStackLayout>
+        <VerticalStackLayout
+            Spacing="10"
+            VerticalOptions="Center"
+            Grid.Row="1"
+            Grid.Column="0">
+            <HorizontalStackLayout
+                Spacing="4"
+                HorizontalOptions="Center">
+                <Border
+                    Stroke="#27282f"
+                    StrokeShape="RoundRectangle 8"
+                    Background="#ffffff"
+                    WidthRequest="150">
+
+                    <Label
+                        Text="Название сцены"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        HeightRequest="42"
+                        WidthRequest="150"
+                        FontSize="16"
+                        FontFamily="Inter"
+                        TextColor="Black"
+                        BackgroundColor="#ffffff" />
+                </Border>
+
+                <Entry
+                    MaxLength="128"
+                    Placeholder="Начните вводить текст..."
+                    Text="{Binding Name}"
+                    FontSize="16"
+                    TextColor="#191970"
+                    BackgroundColor="#ffffff"
+                    WidthRequest="256"
+                    HeightRequest="42"
+                    PlaceholderColor="#A9A9A9"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                <Button
+                    Text="Выбрать файл"
+                    HeightRequest="42"
+                    WidthRequest="150"
+                    FontFamily="Inter"
+                    FontSize="16"
+                    TextColor="#ffffff"
+                    BackgroundColor="#27282f"
+                    Command="{Binding PickFileCommand}"/>
+
+                <Label
+                    Text="{Binding File.FileName}"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    HeightRequest="42"
+                    WidthRequest="256"
+                    FontSize="16"
+                    FontFamily="Inter"
+                    TextColor="#27282f" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

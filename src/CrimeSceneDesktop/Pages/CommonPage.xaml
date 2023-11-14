@@ -122,6 +122,7 @@
                                 <x:Int32>15</x:Int32>
                                 <x:Int32>20</x:Int32>
                                 <x:Int32>25</x:Int32>
+                                <x:Int32>100</x:Int32>
                             </x:Array>
                         </Picker.ItemsSource>
                     </Picker>

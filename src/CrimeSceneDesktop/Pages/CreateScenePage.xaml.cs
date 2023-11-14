@@ -9,7 +9,5 @@ public partial class CreateScenePage : ContentPage
         InitializeComponent();
     }
 
-    private async void GoToCommonPage(object sender, EventArgs e) {
-        await Shell.Current.GoToAsync("commonPage", true);
-    }
+    private async void OnBackButtonClicked(object sender, EventArgs e) => await Shell.Current.GoToAsync("..", true);
 }
