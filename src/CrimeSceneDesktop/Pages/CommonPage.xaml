@@ -13,51 +13,8 @@
 
         <FlexLayout
             Direction="Column"
-            JustifyContent="Start"
-            AlignContent="Center">
+            JustifyContent="SpaceBetween">
 
-            <!-- Header -->
-            <Frame
-                Margin="0"
-                Padding="5,2"
-                BackgroundColor="#212529"
-                BorderColor="#212529"
-                HeightRequest="42">
-
-                <FlexLayout
-                    Direction="Row"
-                    JustifyContent="SpaceBetween"
-                    AlignContent="Center"
-                    WidthRequest="400">
-
-                    <Label
-                        Text="ID"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        FontSize="16"
-                        FontFamily="Inter"
-                        TextColor="#fff" />
-
-                    <Label
-                        Text="ФИО"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        FontSize="16"
-                        FontFamily="Inter"
-                        TextColor="#fff" />
-
-                    <Label
-                        Text="Название сцены"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        FontSize="16"
-                        FontFamily="Inter"
-                        TextColor="#fff" />
-
-                </FlexLayout>
-            </Frame>
-
-            <!-- Body -->
             <CollectionView
                 x:Name="UsersCollection"
                 SelectionMode="Single"
@@ -84,59 +41,22 @@
                                         <VisualState.Setters>
                                             <Setter
                                                 Property="BackgroundColor"
-                                                Value="#65696d" />
+                                                Value="#bfbfbf" />
 
                                             <Setter
                                                 Property="Stroke"
                                                 Value="#111519" />
 
-                                            <Setter
-                                                TargetName="id"
-                                                Property="Label.TextColor"
-                                                Value="#ffffff" />
-
-                                            <Setter
-                                                TargetName="lastName"
-                                                Property="Label.TextColor"
-                                                Value="#ffffff" />
-
-                                            <Setter
-                                                TargetName="firstName"
-                                                Property="Label.TextColor"
-                                                Value="#ffffff" />
-
-                                            <Setter
-                                                TargetName="sceneName"
-                                                Property="Label.TextColor"
-                                                Value="#ffffff" />
-
                                         </VisualState.Setters>
                                     </VisualState>
-
-                                    <!--<VisualState x:Name="PointerOver">
-                                        <VisualState.Setters>
-                                            <Setter
-                                                Property="BackgroundColor"
-                                                Value="#bfc3c7" />
-                                        </VisualState.Setters>
-                                    </VisualState>-->
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
 
                             <FlexLayout
-                                Direction="Row"
+                                Direction="Column"
                                 JustifyContent="SpaceBetween"
-                                AlignContent="Center"
+                                AlignContent="Start"
                                 WidthRequest="400">
-
-                                <Label
-                                    x:Name="id"
-                                    Text="{Binding Id}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center"
-                                    FontSize="16"
-                                    FontFamily="Inter"
-                                    TextColor="black"/>
 
                                 <HorizontalStackLayout Spacing="10">
                                     <Label
@@ -144,7 +64,7 @@
                                         Text="{Binding LastName}"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        FontSize="16"
+                                        FontSize="24"
                                         FontFamily="Inter"
                                         TextColor="black" />
 
@@ -153,26 +73,35 @@
                                         Text="{Binding FirstName}"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        FontSize="16"
+                                        FontSize="24"
                                         FontFamily="Inter"
                                         TextColor="black" />
                                 </HorizontalStackLayout>
 
-                                <Label
-                                    x:Name="sceneName"
-                                    Text="{Binding SceneName}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center"
-                                    FontSize="16"
-                                    FontFamily="Inter"
-                                    TextColor="black"/>
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label
+                                        Text="Название сцены: "
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="16"
+                                        FontFamily="Inter"
+                                        TextColor="black" />
+
+                                    <Label
+                                        x:Name="sceneName"
+                                        Text="{Binding SceneName}"
+                                        HorizontalTextAlignment="Start"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="16"
+                                        FontFamily="Inter"
+                                        TextColor="black"/>
+                                </HorizontalStackLayout>
                             </FlexLayout>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <!--  Footer  -->
             <HorizontalStackLayout HorizontalOptions="End">
                 <Border
                     Stroke="#27282F"
@@ -201,7 +130,6 @@
         </FlexLayout>
 
         <VerticalStackLayout Spacing="10">
-
             <Button
                 Text="Обновить страницу"
                 HeightRequest="42"

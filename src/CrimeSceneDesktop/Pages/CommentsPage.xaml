@@ -5,98 +5,155 @@
              x:Class="CrimeSceneDesktop.Pages.CommentsPage"
              Title="CommentsPage">
 
-    <HorizontalStackLayout
-        VerticalOptions="Fill"
-        HorizontalOptions="Center"
-        Padding="10"
-        Spacing="25">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
 
-        <ScrollView>
-            <VerticalStackLayout
-                Margin="0, 0, 16, 0"
-                Spacing="16">
-                <Border
-                    Stroke="#ffffff"
-                    StrokeShape="RoundRectangle 8"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
-                    <Image
-                        WidthRequest="1120"
-                        HeightRequest="630"
-                        BindingContext="{Binding CurrentComment}"
-                        Source="{Binding PhotoLink}"/>
-                </Border>
+    <Grid Padding="64, 24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-                <Border
-                    Stroke="#bfbfbf"
-                    StrokeShape="RoundRectangle 8"
-                    Padding="8"
-                    BackgroundColor="#f2f1f1"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    WidthRequest="1120">
+        <FlexLayout
+            Direction="Row"
+            JustifyContent="SpaceBetween"
+            Grid.Column="0"
+            Grid.Row="0">
 
-                    <Label
-                        BindingContext="{Binding CurrentComment}"
-                        Text="{Binding Text}"
-                        FontFamily="Inter"
-                        FontSize="16"/>
-                </Border>
+            <Button
+                x:Name="BackButton"
+                Text="Назад"
+                HeightRequest="42"
+                FontFamily="Inter"
+                FontSize="16"
+                TextColor="#ffffff"
+                BackgroundColor="#27282f"
+                Clicked="OnBackButtonClicked"/>
+        </FlexLayout>
 
-                <toolkit:MediaElement
-                    BindingContext="{Binding CurrentComment}"
-                    x:Name="AudioElement"
-                    ShouldShowPlaybackControls="True"
-                    Source="{Binding AudioLink}"
-                    WidthRequest="1120"
-                    HeightRequest="120"/>
+        <HorizontalStackLayout
+            VerticalOptions="Fill"
+            HorizontalOptions="Center"
+            Padding="10"
+            Spacing="25"
+            Grid.Column="0"
+            Grid.Row="1">
 
-            </VerticalStackLayout>
-        </ScrollView>
-
-        <CollectionView
-            x:Name="CommentsCollection"
-            SelectionMode="Single"
-            HorizontalScrollBarVisibility="Never"
-            ItemsSource="{Binding Comments}"
-            SelectedItem="{Binding CurrentComment}">
-            
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-
-            <CollectionView.EmptyView>
-                <Border
-                    Stroke="#212529"
-                    StrokeShape="RoundRectangle 8"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    HeightRequest="180"
-                    WidthRequest="320">
-
-                    <Label
-                        Text="Список комментариев пуст!"
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"/>
-
-                </Border>
-            </CollectionView.EmptyView>
-            
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
+            <ScrollView>
+                <VerticalStackLayout
+                    Margin="0, 0, 16, 0"
+                    Spacing="16">
                     <Border
                         Stroke="#ffffff"
                         StrokeShape="RoundRectangle 8"
                         HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Image
+                            WidthRequest="1120"
+                            HeightRequest="630"
+                            BindingContext="{Binding CurrentComment}"
+                            Source="{Binding PhotoLink}"/>
+                    </Border>
+
+                    <Border
+                        Stroke="#bfbfbf"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="8"
+                        BackgroundColor="#f2f1f1"
+                        HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        Margin="16, 0"
+                        WidthRequest="1120">
+
+                        <Label
+                            BindingContext="{Binding CurrentComment}"
+                            Text="{Binding Text}"
+                            FontFamily="Inter"
+                            FontSize="16"/>
+                    </Border>
+
+                    <toolkit:MediaElement
+                        BindingContext="{Binding CurrentComment}"
+                        x:Name="AudioElement"
+                        ShouldShowPlaybackControls="True"
+                        Source="{Binding AudioLink}"
+                        WidthRequest="1120"
+                        HeightRequest="120"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <CollectionView
+                x:Name="CommentsCollection"
+                SelectionMode="Single"
+                HorizontalScrollBarVisibility="Never"
+                ItemsSource="{Binding Comments}"
+                SelectedItem="{Binding CurrentComment}">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.EmptyView>
+                    <Border
+                        Stroke="#212529"
+                        StrokeShape="RoundRectangle 8"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
                         HeightRequest="180"
                         WidthRequest="320">
-                        <Image Source="{Binding PhotoLink}" />
+
+                        <Label
+                            Text="Список комментариев пуст!"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"/>
+
                     </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </HorizontalStackLayout>
-    
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Stroke="#ffffff"
+                            StrokeShape="RoundRectangle 8"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="16, 0"
+                            HeightRequest="180"
+                            WidthRequest="320">
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+
+                                    <VisualState x:Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="Stroke"
+                                                Value="#848484"/>
+
+                                            <Setter
+                                                Property="StrokeThickness"
+                                                Value="4"/>
+
+                                            <Setter
+                                                Property="Padding"
+                                                Value="4"/>
+
+                                            <Setter
+                                                Property="HeightRequest"
+                                                Value="184"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Image Source="{Binding PhotoLink}" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </HorizontalStackLayout>
+    </Grid>
+
 </ContentPage>

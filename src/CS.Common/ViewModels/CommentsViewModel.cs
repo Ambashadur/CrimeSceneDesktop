@@ -57,6 +57,6 @@ public class CommentsViewModel : BaseViewModel
         });
 
         TotalCount = pageResult.TotalCount;
-        Comments = pageResult.Data.Select(comment => new CommentViewModel(comment));
+        Comments = pageResult.Data.Select(comment => new CommentViewModel(comment)).ToList();
     }
 }

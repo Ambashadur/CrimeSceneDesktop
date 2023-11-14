@@ -63,7 +63,7 @@ public class UserViewModel : BaseViewModel
         get => _user.SceneName;
         set {
             if (_user.SceneName != value) {
-                _user.SceneName = value;
+                _user.SceneName = string.IsNullOrEmpty(value) ? "-" : value;
                 OnPropertyChanged();
             }
         }
@@ -100,6 +100,10 @@ public class UserViewModel : BaseViewModel
 
     public UserViewModel(User user) : this() {
         _user = user;
+
+        if (string.IsNullOrEmpty(_user.SceneName)) {
+            _user.SceneName = "-";
+        }
     }
 
     private async Task SetUserScene(long? sceneId) {

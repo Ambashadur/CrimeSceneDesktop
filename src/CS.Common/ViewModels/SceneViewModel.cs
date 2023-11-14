@@ -1,5 +1,4 @@
-﻿using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using CS.Common.Services;
 using CS.Contracts.Scenes;
 
@@ -30,6 +29,16 @@ public class SceneViewModel : BaseViewModel
         set {
             if (_scene.Name != value) {
                 _scene.Name = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public string Link {
+        get => _scene.Link;
+        set {
+            if (_scene.Link != value) {
+                _scene.Link = value;
                 OnPropertyChanged();
             }
         }

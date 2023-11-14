@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CS.Common.ViewModels;
-using CS.Contracts.Scenes;
 using Microsoft.Maui.Controls;
 
 namespace CrimeSceneDesktop.Pages;
@@ -13,20 +13,25 @@ public partial class UserPage : ContentPage, IQueryAttributable
 
     public UserPage() {
         InitializeComponent();
+
+        _scenes = new ScenesViewModel();
     }
 
-    public void ApplyQueryAttributes(IDictionary<string, object> query) {
+    public async void ApplyQueryAttributes(IDictionary<string, object> query) {
         _user = query["user"] as UserViewModel;
-        _scenes = query["scenes"] as ScenesViewModel;
-
-        ScenePicker.BindingContext = _scenes;
-        ScenePicker.SetBinding(Picker.ItemsSourceProperty, nameof(ScenesViewModel.Scenes));
-        ScenePicker.SetBinding(Picker.SelectedItemProperty, nameof(ScenesViewModel.CurrentScene));
-        ScenePicker.ItemDisplayBinding = new Binding(nameof(Scene.Name));
-        ScenePicker.SelectedIndexChanged += (s, e) => SaveButton.CommandParameter = _scenes.CurrentScene?.Id;
+        await _scenes.GetScenesPage.ExecuteAsync(null);
 
         UserView.BindingContext = _user;
 
         _scenes.CurrentScene = _scenes.Scenes.FirstOrDefault(scene => scene.Id == _user.SceneId) ?? _scenes.Scenes.First();
+
+        SceneCollection.BindingContext = _scenes;
+        SceneCollection.SetBinding(CollectionView.ItemsSourceProperty, nameof(ScenesViewModel.Scenes));
+        SceneCollection.SetBinding(CollectionView.SelectedItemProperty, nameof(ScenesViewModel.CurrentScene));
+
+        SceneLabel.SetBinding(Entry.TextProperty, new Binding { Source = _scenes, Path = "CurrentScene.Name" });
+        SaveButton.SetBinding(Button.CommandParameterProperty, new Binding { Source = _scenes, Path = "CurrentScene.Id" });
     }
+
+    private async void OnBackButtonClicked(object sender, EventArgs e) => await Shell.Current.GoToAsync("..", true);
 }

@@ -52,6 +52,6 @@ public class UsersViewModel : BaseViewModel
         });
 
         TotalCount = pageResult.TotalCount;
-        Users = pageResult.Data.Select(user => new UserViewModel(user));
+        Users = pageResult.Data.Select(user => new UserViewModel(user)).ToList();
     }
 }

@@ -17,42 +17,22 @@ public class ScenesViewModel : BaseViewModel
 
     public SceneViewModel CurrentScene {
         get => _currentScene;
-        set {
-            if (_currentScene != value) {
-                _currentScene = value;
-                OnPropertyChanged();
-            }
-        }
+        set => SetProperty(ref _currentScene, value);
     }
 
     public List<SceneViewModel> Scenes {
         get => _scenes;
-        set {
-            if (_scenes != value) {
-                _scenes = value;
-                OnPropertyChanged();
-            }
-        }
+        set => SetProperty(ref _scenes, value);
     }
 
     public int Page {
         get => _page;
-        set {
-            if (_page != value) {
-                _page = value;
-                OnPropertyChanged();
-            }
-        }
+        set => SetProperty(ref _page, value);
     }
 
     public int Count {
         get => _count;
-        set {
-            if (_count != value) {
-                _count = value;
-                OnPropertyChanged();
-            }
-        }
+        set => SetProperty(ref _count, value);
     }
 
     public ScenesViewModel() {
@@ -68,8 +48,12 @@ public class ScenesViewModel : BaseViewModel
             Count = _count
         });
 
-        _scenes = new List<SceneViewModel> { new SceneViewModel { Id = -1, Name = "Не выбранно" } };
-        _scenes.AddRange(pageResult.Data.Select(scene => new SceneViewModel { Id = scene.Id, Name = scene.Name }).ToList());
+        _scenes = new List<SceneViewModel> { new SceneViewModel { Id = -1, Name = "Не выбранно", Link = "not_select.jpg" } };
+        _scenes.AddRange(pageResult.Data.Select(scene => new SceneViewModel {
+            Id = scene.Id,
+            Name = scene.Name,
+            Link = CSDHttpClient.GetLink(scene.Link)
+        }).ToList());
         OnPropertyChanged(nameof(Scenes));
     }
 }

@@ -41,7 +41,7 @@ public class CommentViewModel : BaseViewModel
         get => _comment.AudioLink;
         set {
             if (_comment.AudioLink != value) {
-                _comment.AudioLink = CSDHttpClient.GetLink(value);
+                _comment.AudioLink = value;
                 OnPropertyChanged();
             }
         }
@@ -51,7 +51,7 @@ public class CommentViewModel : BaseViewModel
         get => _comment.PhotoLink;
         set {
             if (_comment.PhotoLink != value) {
-                _comment.PhotoLink = CSDHttpClient.GetLink(value);
+                _comment.PhotoLink = value;
                 OnPropertyChanged();
             }
         }
