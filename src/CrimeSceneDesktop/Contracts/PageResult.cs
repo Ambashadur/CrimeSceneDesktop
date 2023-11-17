@@ -1,4 +1,7 @@
-﻿namespace CS.Contracts;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace CS.Contracts;
 
 public class PageResult<TData>
 {

@@ -1,5 +1,6 @@
-﻿using System.Globalization;
-using Microsoft.Maui.Platform;
+﻿using System;
+using System.Globalization;
+using Microsoft.Maui.Controls;
 
 namespace CS.Common.Triggers;
 
